@@ -12,12 +12,17 @@ pipeline{
                     sh 'mvn clean install'
                 }
             }
-     script{
-                 withDockerRegistry(credentialsId: 'a77c722e-a2ea-45c3-b4e3-6100d91bcb67') {
-                         // some block
-                         sh 'docker image build -t sandeep022/inventoryservice:tage234 .'
-                         sh 'docker push sandeep022/inventoryservice:tage234'
-                     }
-    }
+
+     stage('Docker Build'){
+                steps{
+                    echo 'Docker build'
+                    script{
+                         withDockerRegistry(credentialsId: 'a77c722e-a2ea-45c3-b4e3-6100d91bcb67') {
+                                                 // some block
+                                                 sh 'docker image build -t sandeep022/inventoryservice:tage234 .'
+                                                 sh 'docker push sandeep022/inventoryservice:tage234'
+                                             }
+                    }
+                }
 
 }
