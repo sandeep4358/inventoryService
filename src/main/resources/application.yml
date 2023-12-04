@@ -1,0 +1,41 @@
+server:
+  servlet:
+    context-path: /inventory-service
+  port: 8026
+
+spring:
+  application:
+    name: inventory-service
+  datasource:
+    url: jdbc:mysql://192.168.0.102:3306/microservices
+    username: sandeep
+    password: sandeep
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+#----------------below logging will activate the jpa transactional log
+#actuator endpoint managemnet
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    beans:
+      enabled: true
+    env:
+      enabled: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.0.101:8761/eureka
+    instance:
+    preferIpAddress: true
+
+logging:
+  charset:
+    file: /opt/tomcat/logs/Inventoryservice.log
+  level:
+    org.springframework.orm.jpa: DEBUG
+    org.springframework.transaction: DEBUG
