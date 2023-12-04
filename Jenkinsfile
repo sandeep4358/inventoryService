@@ -7,7 +7,7 @@ pipeline{
                 git changelog: false, poll: false, url: 'https://github.com/sandeep4358/inventoryService.git'
             }
         }
-		}
+
 
     stage('Maven Build'){
                 steps{
