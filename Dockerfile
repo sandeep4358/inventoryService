@@ -6,7 +6,7 @@ MAINTAINER "SANDEEP KUMAR"
 #RUN     rm -rf /user/local/tomcat/webapps/*
 
 #now copy your project in that folder
-COPY ./target/InventorySerivce.war /usr/local/tomcat/webapps/ROOT.war
+COPY ./target/InventorySerivce.war /usr/local/tomcat/webapps/inventory-service.war
 
 
 EXPOSE 8080
