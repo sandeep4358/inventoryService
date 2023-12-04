@@ -1,14 +1,16 @@
 pipeline{
+    agent any
     stages{
         stage('SCM'){
-            step{
+            steps{
                 echo ' getting code from the git repository'
                 git changelog: false, poll: false, url: 'https://github.com/sandeep4358/inventoryService.git'
             }
         }
+		}
 
     stage('Maven Build'){
-                step{
+                steps{
                     sh 'mvn clean install'
                 }
             }
@@ -24,5 +26,6 @@ pipeline{
                                              }
                     }
                 }
+		}
 
 }
