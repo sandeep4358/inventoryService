@@ -1,7 +1,7 @@
 server:
   servlet:
     context-path: /inventory-service
-  port: 8026
+  port: 8082
 
 spring:
   application:
@@ -25,6 +25,13 @@ management:
       enabled: true
     env:
       enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:  true
+        exclude: threaddump
 
 
 eureka:
