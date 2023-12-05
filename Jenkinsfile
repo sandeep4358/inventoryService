@@ -28,5 +28,18 @@ pipeline{
                 }
 		}
 
+		   stage('Docker run'){
+                steps{
+                    echo 'Docker image run'
+                    script{
+                         withDockerContainer(image: 'sandeep022/inventoryservice:tage234', toolName: 'Docker') {
+
+                                                 // some block
+                                                 sh 'docker container run -it -p 8082:8080 --name inventoryService111 sandeep022/inventoryservice:tage234 '
+                                             }
+                    }
+                }
+		}
+
 }
 }
