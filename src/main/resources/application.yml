@@ -25,13 +25,11 @@ management:
       enabled: true
     env:
       enabled: true
-
-management:
-  endpoints:
     web:
       exposure:
         include:  true
         exclude: threaddump
+
 
 
 eureka:
