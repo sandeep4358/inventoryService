@@ -21,22 +21,22 @@ public class InventorySerivceApplication extends SpringBootServletInitializer {
 		return builder.sources(InventorySerivceApplication.class);
 	}
 
-	@Bean
-	public CommandLineRunner loadData(InventoryRepository repository) {
-
-		return args -> {
-
-			Inventory inventory = new Inventory();
-			inventory.setSkuCode("iphone13");
-			inventory.setQuantity(2);
-
-			Inventory inventory1 = new Inventory();
-			inventory1.setSkuCode("iphone14");
-			inventory1.setQuantity(0);
-
-			repository.save(inventory1);
-			repository.save(inventory);
-		};
-
-	}
+//	@Bean
+//	public CommandLineRunner loadData(InventoryRepository repository) {
+//
+//		return args -> {
+//
+//			Inventory inventory = new Inventory();
+//			inventory.setSkuCode("iphone13");
+//			inventory.setQuantity(2);
+//
+//			Inventory inventory1 = new Inventory();
+//			inventory1.setSkuCode("iphone14");
+//			inventory1.setQuantity(0);
+//
+//			repository.save(inventory1);
+//			repository.save(inventory);
+//		};
+//
+//	}
 }
