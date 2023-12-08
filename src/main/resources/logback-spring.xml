@@ -2,7 +2,7 @@
 <configuration>
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
     <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <destination>192.168.0.101:5000</destination>
+        <destination>192.168.0.102:5000</destination>
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
                 <mdc />
@@ -12,7 +12,13 @@
                 <pattern>
                     <pattern>
                         {
-                        "appName": "inventory-service"
+                        "appVersion": "${build.version}",
+                        "appName": "${build.artifact}",
+                        "resourceType": "${logback.application.resource.type}",
+                        "resourceID": "${logback.application.resource.id}",
+                        "level": "%level",
+                        "hostname": "${logback.server.host}",
+                        "indexType": "${logback.logstash.index.type}"
                         }
                     </pattern>
                 </pattern>
