@@ -28,6 +28,28 @@ pipeline{
                 }
 		}
 
+		post{
+			always{
+				emailtext(
+					subject:"Pipeline Status: ${currentBuild.result}",
+					body: '''<html>
+							<body>
+								<p>Build Status: ${currentBuild.result}</p>
+								<p>Build Number: ${currentBuild.number}</p>
+								<p>Check the <a href="${env.BUILD_URL}">console output</a>.</p>
+
+							</body>
+							</html> ''',
+					to: 'sandy.msit@gmail.com',
+					from: 'sandy.msit@gmail.com',
+					replyTo: 'freelanceratsany@gmail.com',
+					mimeType: 'text/html'
+				)
+
+
+			}
+		}
+
 
 
 }
