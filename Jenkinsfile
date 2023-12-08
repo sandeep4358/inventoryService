@@ -30,7 +30,7 @@ pipeline{
 		}
 		post{
 			always{
-				emailtext(
+				emailext(
 					subject:"Pipeline Status: ${BUILD_NUMBER}",
 					body: '''<html>
 							<body>
