@@ -21,36 +21,36 @@ pipeline{
                     script{
                          withDockerRegistry(credentialsId: 'a77c722e-a2ea-45c3-b4e3-6100d91bcb67') {
                                                  // some block
-                                                 sh 'docker image build -t sandeep022/inventoryservice:tage234 .'
-                                                 sh 'docker push sandeep022/inventoryservice:tage234'
+                                                 sh 'docker image build -t sandeep022/inventoryservice:${BUILD_NUMBER} .'
+                                                 sh 'docker push sandeep022/inventoryservice:${BUILD_NUMBER}'
                                              }
                     }
                 }
 		}
-
+		}
 		post{
 			always{
 				emailtext(
-					subject:"Pipeline Status: ${currentBuild.result}",
+					subject:"Pipeline Status: ${BUILD_NUMBER}",
 					body: '''<html>
 							<body>
-								<p>Build Status: ${currentBuild.result}</p>
-								<p>Build Number: ${currentBuild.number}</p>
-								<p>Check the <a href="${env.BUILD_URL}">console output</a>.</p>
-
+								<p>Build Status: ${BUILD_STATUS}</p>
+								<p>Build Number: ${BUILD_NUMBER}</p>
+								<p>Check the <a href="${BUILD_URL}">console output</a>.</p>
+								
 							</body>
 							</html> ''',
 					to: 'sandy.msit@gmail.com',
-					from: 'sandy.msit@gmail.com',
+					from: 'sandy.msit@gmail.com',	
 					replyTo: 'freelanceratsany@gmail.com',
 					mimeType: 'text/html'
 				)
-
-
+			
+			
 			}
 		}
 
 
 
-}
+
 }
