@@ -22,11 +22,29 @@ pipeline{
                          withDockerRegistry(credentialsId: 'a77c722e-a2ea-45c3-b4e3-6100d91bcb67') {
                                                  // some block
                                                  sh 'docker image build -t sandeep022/inventoryservice:${BUILD_NUMBER} .'
-                                                 sh 'docker push sandeep022/inventoryservice:${BUILD_NUMBER}'
+
+                                                 //for a time being as it push to docker hub take time I am commenting that
+                                                 //sh 'docker push sandeep022/inventoryservice:${BUILD_NUMBER}'
                                              }
                     }
                 }
-		}
+
+
+
+			}
+
+		 stage('Docker Image Run '){
+                                steps{
+                                    echo 'Image Run'
+                                    script{
+                                                                 // some block
+                												 //sh 'docker container rm -f orderservice'
+
+                                                                 sh 'docker run -dit --name inventoryService${BUILD_NUMBER} -p 8082:8080 sandeep022/inventoryservice:${BUILD_NUMBER}'
+
+                                    }
+                                }
+                		}
 		}
 		post{
 			always{
