@@ -3,16 +3,7 @@ server:
     context-path: /inventory-service
   port: 8082
 
-
-
-
-
 spring:
-  zipkin:
-    base-url: http://192.168.0.102:9411/
-  sleuth:
-    sampler:
-      probability: 1.0
   application:
     name: inventory-service
   datasource:
@@ -25,7 +16,7 @@ spring:
       ddl-auto: update
     show-sql: true
 #----------------below logging will activate the jpa transactional log
-#actuator endpoint managemnet
+#zipkin sleuth distributed log tracing configuration
 management:
   tracing:
     sampling:
@@ -46,8 +37,6 @@ management:
         include:  true
         exclude: threaddump
 
-
-
 logging:
   pattern:
     level: '%5p [${spring.application.name}, %X{traceId}, %X{spanId}]'
@@ -56,7 +45,7 @@ eureka:
     # Necessary for Docker as it doesn't have DNS entries
     prefer-ip-address: true
     # Necessary for Docker otherwise you will get 172.0.0.x IP
-    ip-address: 192.168.0.102
+    ip-address: 192.168.0.101
   #"${HOST}"
   client:
     serviceUrl:
