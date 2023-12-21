@@ -3,6 +3,10 @@ server:
     context-path: /inventory-service
   port: 8082
 
+
+
+
+
 spring:
   zipkin:
     base-url: http://192.168.0.102:9411/
@@ -23,6 +27,13 @@ spring:
 #----------------below logging will activate the jpa transactional log
 #actuator endpoint managemnet
 management:
+  tracing:
+    sampling:
+      probability: 1.0 # only for testing purpose, switch back to 0.1 for production code
+  zipkin:
+    tracing:
+      endpoint: http://192.168.0.102:9411/api/v2/spans
+
   endpoint:
     shutdown:
       enabled: true
@@ -37,6 +48,9 @@ management:
 
 
 
+logging:
+  pattern:
+    level: '%5p [${spring.application.name}, %X{traceId}, %X{spanId}]'
 eureka:
   instance:
     # Necessary for Docker as it doesn't have DNS entries
