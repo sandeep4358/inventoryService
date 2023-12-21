@@ -26,6 +26,7 @@ management:
       endpoint: http://192.168.0.102:9411/api/v2/spans
 
   endpoint:
+
     shutdown:
       enabled: true
     beans:
@@ -45,24 +46,21 @@ eureka:
     # Necessary for Docker as it doesn't have DNS entries
     prefer-ip-address: true
     # Necessary for Docker otherwise you will get 172.0.0.x IP
-    ip-address: 192.168.0.102
+    ip-address: 192.168.0.101
   #"${HOST}"
   client:
     serviceUrl:
       # Location of your eureka server
       defaultZone: http://192.168.0.101:8761/eureka/
 
-# Zipkin configuration
-
-
-
-
-
-  #file:
-
-
-    #org.springframework.orm.jpa: DEBUG
-    #org.springframework.transaction: DEBUG
-
-  #pattern:
-   # console: %d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n
+#Resilieance4j
+resilience4j.circuitbreaker:
+  instances:
+    inventory:
+      registerHealthIndicator: true
+      slidingWindowType: COUNT_BASED
+      slidingWindowSize: 10
+      failureRateThreshold: 50
+      waitDurationInOpenState: 5s
+      permittedNumberOfCallsInHalfOpenState: 3
+      automaticTransitionFromOpenToHalfOpenEnabled: true
