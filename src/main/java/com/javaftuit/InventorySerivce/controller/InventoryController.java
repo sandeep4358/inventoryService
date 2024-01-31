@@ -32,8 +32,8 @@ public class InventoryController {
         return inventoryService.isInStock(skuCode);
     }
 
-    public ResponseEntity customFallBackMethod(List<String> skuCode, RuntimeException exception){
-        return new ResponseEntity("Oops Something went wrong, please check the order with cutomer care.",HttpStatus.CONFLICT);
+    public String customFallBackMethod(List<String> skuCode, RuntimeException exception){
+        return"Oops Something went wrong, please check the order with cutomer care.";
     }
 
     @GetMapping(value = "/getInventory")

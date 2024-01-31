@@ -24,9 +24,7 @@ management:
   zipkin:
     tracing:
       endpoint: http://192.168.0.102:9411/api/v2/spans
-
   endpoint:
-
     shutdown:
       enabled: true
     beans:
@@ -46,12 +44,12 @@ eureka:
     # Necessary for Docker as it doesn't have DNS entries
     prefer-ip-address: true
     # Necessary for Docker otherwise you will get 172.0.0.x IP
-    ip-address: 192.168.0.101
+    ip-address: 192.168.0.102
   #"${HOST}"
   client:
     serviceUrl:
       # Location of your eureka server
-      defaultZone: http://192.168.0.101:8761/eureka/
+      defaultZone: http://192.168.0.102:8761/eureka/
 
 #Resilieance4j
 resilience4j.circuitbreaker:
