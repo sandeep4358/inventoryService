@@ -40,7 +40,7 @@ pipeline{
                                                                  // some block
                 												 //sh 'docker container rm -f orderservice'
 
-                                                                 sh 'docker run -dit --name inventoryService${BUILD_NUMBER} -p 8082:8080 sandeep022/inventoryservice:${BUILD_NUMBER}'
+                                                              //   sh 'docker run -dit --name inventoryService${BUILD_NUMBER} -p 8082:8080 sandeep022/inventoryservice:${BUILD_NUMBER}'
 
                                     }
                                 }
