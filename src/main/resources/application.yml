@@ -7,9 +7,9 @@ spring:
   application:
     name: inventory-service
   datasource:
-    url: jdbc:mysql://192.168.0.102:3306/microservices
-    username: sandeep
-    password: sandeep
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/microservices
+    username: ${MYSQL_USER:laravel}
+    password: ${MYSQL_PASSWORD:laravel}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -17,39 +17,39 @@ spring:
     show-sql: true
 #----------------below logging will activate the jpa transactional log
 #zipkin sleuth distributed log tracing configuration
-management:
-  tracing:
-    sampling:
-      probability: 1.0 # only for testing purpose, switch back to 0.1 for production code
-  zipkin:
-    tracing:
-      endpoint: http://192.168.0.102:9411/api/v2/spans
-  endpoint:
-    shutdown:
-      enabled: true
-    beans:
-      enabled: true
-    env:
-      enabled: true
-    web:
-      exposure:
-        include:  true
-        exclude: threaddump
+#management:
+#  tracing:
+#    sampling:
+#      probability: 1.0 # only for testing purpose, switch back to 0.1 for production code
+#  zipkin:
+#    tracing:
+#      endpoint: http://192.168.0.102:9411/api/v2/spans
+#  endpoint:
+#    shutdown:
+#      enabled: true
+#    beans:
+#      enabled: true
+#    env:
+#      enabled: true
+#    web:
+#      exposure:
+#        include:  true
+#        exclude: threaddump
 
 logging:
   pattern:
     level: '%5p [${spring.application.name}, %X{traceId}, %X{spanId}]'
 eureka:
-  instance:
-    # Necessary for Docker as it doesn't have DNS entries
-    prefer-ip-address: true
-    # Necessary for Docker otherwise you will get 172.0.0.x IP
-    ip-address: 192.168.0.102
+#  instance:
+#    # Necessary for Docker as it doesn't have DNS entries
+#    prefer-ip-address: true
+#    # Necessary for Docker otherwise you will get 172.0.0.x IP
+#    ip-address: 192.168.0.102
   #"${HOST}"
   client:
     serviceUrl:
       # Location of your eureka server
-      defaultZone: http://192.168.0.102:8761/eureka/
+      defaultZone: http://service-registory16:8761/eureka
 
 #Resilieance4j
 resilience4j.circuitbreaker:
