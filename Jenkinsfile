@@ -33,7 +33,7 @@ pipeline{
 
 			}
 
-		 stage('Docker Image Run '){
+		 /*stage('Docker Image Run '){
                                 steps{
                                     echo 'Image Run'
                                     script{
@@ -44,7 +44,7 @@ pipeline{
 
                                     }
                                 }
-                		}
+                		}*/
 		}
 		post{
 			always{
