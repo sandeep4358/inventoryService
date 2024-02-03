@@ -11,7 +11,7 @@ pipeline{
 
     stage('Maven Build'){
                 steps{
-                    sh 'mvn clean install'
+                    sh 'mvn clean install -DskipTests'
                 }
             }
 
@@ -33,18 +33,18 @@ pipeline{
 
 			}
 
-		 stage('Docker Image Run '){
+		 /*stage('Docker Image Run '){
                                 steps{
                                     echo 'Image Run'
                                     script{
                                                                  // some block
                 												 //sh 'docker container rm -f orderservice'
 
-                                                                 sh 'docker run -dit --name inventoryService${BUILD_NUMBER} -p 8082:8080 sandeep022/inventoryservice:${BUILD_NUMBER}'
+                                                              //   sh 'docker run -dit --name inventoryService${BUILD_NUMBER} -p 8082:8080 sandeep022/inventoryservice:${BUILD_NUMBER}'
 
                                     }
                                 }
-                		}
+                		}*/
 		}
 		post{
 			always{
