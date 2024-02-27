@@ -1,6 +1,6 @@
 server:
-  servlet:
-    context-path: /inventory-service
+#  servlet:
+#    context-path: /inventory-service
   port: 8082
 
 spring:
