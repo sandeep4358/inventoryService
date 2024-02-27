@@ -8,8 +8,9 @@ spring:
     name: inventory-service
   datasource:
     url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/microservices
-    username: ${MYSQL_USER:laravel}
-    password: ${MYSQL_PASSWORD:laravel}
+
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PASSWORD:root}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -61,4 +62,4 @@ resilience4j.circuitbreaker:
       failureRateThreshold: 50
       waitDurationInOpenState: 5s
       permittedNumberOfCallsInHalfOpenState: 3
-      automaticTransitionFromOpenToHalfOpenEnabled: true
+    #  automaticTransitionFromOpenToHalfOpenEnabled: true
